@@ -8,10 +8,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/sathishcode').then(()=>{
     console.log('connected Error')
 })
 
-const user = new User({
-     name:'guru',
-     age:24
-});
+// const user = new User({
+//      name:'Aravind',
+//      age:24
+// });
 // user.save().then(()=>{
 //     console.log('User Save')
 // })
@@ -21,7 +21,12 @@ const user = new User({
 //     productprice:1000
 // });
 async function run(){
-    const newuser=await user.save()
-        console.log(newuser)
+    const newuser=await User.create({
+        name:"sathish",
+        age:26
+    });
+    newuser.name='Mathew';
+    await newuser.save();
+    console.log(newuser)
 }
 run();
