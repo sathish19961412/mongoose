@@ -21,12 +21,20 @@ mongoose.connect('mongodb://127.0.0.1:27017/sathishcode').then(()=>{
 //     productprice:1000
 // });
 async function run(){
-    const newuser=await User.create({
-        name:"sathish",
-        age:26
-    });
-    newuser.name='Mathew';
-    await newuser.save();
-    console.log(newuser)
+    try{
+        const newuser=await User.create({
+            name:"sathish",
+            age:26,
+            hobbies:['Cricket','Music'],
+            address:{
+                street:"41/20A F.C.I Colony"
+            }
+        });
+    
+        console.log(newuser)
+    }catch(e){
+        console.log(e.message)
+    }
+   
 }
 run();
