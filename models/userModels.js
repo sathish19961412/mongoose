@@ -6,12 +6,24 @@ const addressSchema=new mongoose.Schema({
 })
 const userSchema=new mongoose.Schema({
       name:String,
-      age:Number,
+      age:{
+        type:Number,
+        min:10,
+        max:30,
+        validate:{
+            validator: v => v % 2 == 0,
+            message: props => `${props.value} is not even number`
+        }
+      },
       email:{
         type:String,
-        required:true
+        required:true,
+        lowercase:true
       },
-      createAt:Date,
+      createAt:{
+            type:Date,
+            default:()=>Date.now()
+      },
       updateAt:Date,
       bestfriend:mongoose.SchemaTypes.ObjectId,
       hobbies:[String],

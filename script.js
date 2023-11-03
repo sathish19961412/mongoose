@@ -24,8 +24,8 @@ async function run(){
     try{
         const newuser=await User.create({
             name:"sathish",
-            email:"sathishfreelanc5@gmail.com",
-            age:26,
+            email:"Sathishfreelanc5@gmail.com",
+            age:28,
             hobbies:['Cricket','Music'],
             address:{
                 street:"41/20A F.C.I Colony"
