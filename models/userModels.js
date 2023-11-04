@@ -25,11 +25,17 @@ const userSchema=new mongoose.Schema({
             default:()=>Date.now()
       },
       updateAt:Date,
-      bestfriend:mongoose.SchemaTypes.ObjectId,
+      bestfriend:{
+           type:mongoose.SchemaTypes.ObjectId,
+           ref:'User'
+      },
       hobbies:[String],
       address:addressSchema
 });
 
+userSchema.methods.sayHi=function(){
+      console.log(`My name is ${this.name}`)
+}
 const userModel=mongoose.model('User',userSchema);
 
 
