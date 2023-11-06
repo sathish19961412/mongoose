@@ -33,8 +33,8 @@ async function run(){
         // });
     
         // console.log(newuser)
-        const user=await User.findOne({name:'sathish'});
-        user.sayHi()
+        const user=await User.find().byName('ram');
+        //user.sayHi()
         // .where('id')
         // .equals('653f9a96464b464ab0be0446')
         // .populate('bestfriend')

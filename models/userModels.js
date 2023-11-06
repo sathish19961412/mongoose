@@ -1,9 +1,11 @@
 const mongoose=require('mongoose');
 
+//Intergration Schema Name
 const addressSchema=new mongoose.Schema({
       city:String,
       street:String
 })
+//Schema Name
 const userSchema=new mongoose.Schema({
       name:String,
       age:{
@@ -32,10 +34,23 @@ const userSchema=new mongoose.Schema({
       hobbies:[String],
       address:addressSchema
 });
+/*Schema Used To The Schema Name.methods().methodname*/
+// userSchema.methods.sayHi=function(){
+//       console.log(`My name is ${this.name}`)
+// }
 
-userSchema.methods.sayHi=function(){
-      console.log(`My name is ${this.name}`)
+//Statics Used Schemaname.statics.findByName
+
+userSchema.statics.findByName =function(name){
+      return this.find({name:name})
 }
+//query() method Used to byName() function
+userSchema.query.byName =function(name){
+      return this.where({name:name})
+}
+userSchema.virtual('namedEmail').get(function(){
+      return `${this.name} <${this.email}>`
+})
 const userModel=mongoose.model('User',userSchema);
 
 
