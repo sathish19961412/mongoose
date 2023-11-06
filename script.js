@@ -33,13 +33,15 @@ async function run(){
         // });
     
         // console.log(newuser)
-        const user=await User.find().byName('ram');
+        const user=await User.findById('6543607dd16bc5fb9fed9fd2');
+       
         //user.sayHi()
         // .where('id')
         // .equals('653f9a96464b464ab0be0446')
         // .populate('bestfriend')
         // .limit(1);
         console.log(user)
+        console.log(user.namedEmail)
     }catch(e){
         console.log(e.message)
     }
